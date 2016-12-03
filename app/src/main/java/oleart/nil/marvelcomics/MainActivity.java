@@ -7,10 +7,6 @@ import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.Log;
 
-import com.arnaudpiroelle.marvel.api.MarvelApi;
-import com.arnaudpiroelle.marvel.api.objects.Character;
-import com.arnaudpiroelle.marvel.api.objects.CharacterList;
-import com.arnaudpiroelle.marvel.api.services.sync.CharactersService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +25,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     public static final String MAIN_ACTIVITY_TAG = MainActivity.class.getSimpleName();
+    public static final String ON_CREATE_TAG = "MainActivity: OnCreate";
    public static final String URL = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=6cd9856dfd67d7e053798a2bf731b7a7&hash=91ac477fb8249d62c6489617ffcb97de";
 
     @Override
@@ -41,11 +38,20 @@ public class MainActivity extends AppCompatActivity {
             JSONObject myJSONObject = new AsyncFetch().execute(URL).get();
             JSONObject secLevelJObject = myJSONObject.getJSONObject("data");
             JSONArray result = secLevelJObject.getJSONArray("results");
+            Log.e(ON_CREATE_TAG,result.toString());
+
             ArrayList myListArray = new ArrayList();
 
             for (int i = 0; i < result.length(); i++) {
-                Log.e(MAIN_ACTIVITY_TAG, result.getJSONObject(i).get("name").toString());
 
+                //Log.e(ON_CREATE_TAG, result.getJSONObject(i).get("name").toString());
+                myListArray.add(result.getJSONObject(i).get("name"));
+                myListArray.add(result.getJSONObject(i).get("description"));
+                JSONObject image = result.getJSONObject(i).getJSONObject("thumbnail");
+                //Log.e(ON_CREATE_TAG,image.toString());
+                String myImage = image.getString("path")+"."+image.getString("extension");
+                myListArray.add(myImage);
+                Log.e(ON_CREATE_TAG,myListArray.toString());
             }
 
         } catch (InterruptedException e) {
