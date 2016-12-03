@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MarvelComics</string>
     <string name="nil_oleart">Nil Oleart</string>
+    <string name="main_activity_title">Busca tu súper-heroe!</string>
 </resources>
