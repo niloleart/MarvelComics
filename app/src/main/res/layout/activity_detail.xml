@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/detail_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="7.5dp"
+        android:paddingTop="7.5dp">
+
+        <ImageView
+            android:id="@+id/detail_avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.25"
+            android:scaleType="fitXY"
+            tools:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:orientation="vertical"
+            android:paddingLeft="7dp">
+
+            <TextView
+                android:id="@+id/detail_hero_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/detail_hero_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Description"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/datail_links"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_top_layout"
+        android:paddingBottom="7.5dp"
+        android:paddingStart="@dimen/padding_left"
+        android:paddingTop="7.5dp"
+        android:text="Links"
+        android:textColor="@color/primary_text"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/detail_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datail_links"
+        android:orientation="horizontal"
+        android:paddingBottom="7.5dp"
+        android:paddingEnd="@dimen/padding_left"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingTop="7.5dp">
+
+        <Button
+            android:id="@+id/btn_detail_detalles"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:text="Detalles" />
+
+        <Button
+            android:id="@+id/btn_detail_wiki"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Wiki" />
+
+        <Button
+            android:id="@+id/btn_detail_comics"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:text="Comics" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/datail_recursos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_buttons"
+        android:paddingBottom="7.5dp"
+        android:paddingStart="@dimen/padding_left"
+        android:paddingTop="7.5dp"
+        android:text="Detalles"
+        android:textColor="@color/primary_text"
+        android:textSize="20sp" />
+
+</RelativeLayout>

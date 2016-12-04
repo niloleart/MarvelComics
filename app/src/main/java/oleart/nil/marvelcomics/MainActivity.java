@@ -10,6 +10,8 @@ import android.util.JsonReader;
 import android.util.Log;
 
 
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private HeroesAdapter mAdapter;
     private ArrayList<Hero> myListArray;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 myListArray.add(new Hero(
                         result.getJSONObject(i).getString("name"),
                         result.getJSONObject(i).getString("description"),
-                        image.getString("path")+"."+image.getString("extension"))
+                        image.getString("path") + "." + image.getString("extension"))
                 );
                 Log.e(ON_CREATE_TAG, myListArray.toString());
             }
@@ -67,7 +70,14 @@ public class MainActivity extends AppCompatActivity {
         }
         //this.recyclerView.setHasFixedSize(true);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        this.recyclerView.setAdapter(new HeroesAdapter(myListArray,this));
-
+        this.recyclerView.setAdapter(new HeroesAdapter(myListArray, this));
+        recyclerView.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(this)
+                        .color(R.color.divider)
+                        .sizeResId(R.dimen.divider)
+                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
+                        .build());
     }
+
+
 }

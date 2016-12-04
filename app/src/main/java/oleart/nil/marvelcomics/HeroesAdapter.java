@@ -1,6 +1,7 @@
 package oleart.nil.marvelcomics;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -23,15 +25,31 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.MyViewHold
     public static final String HEROES_ADAPTER_TAG = HeroesAdapter.class.getSimpleName();
     private List<Hero> heroList;
 
+
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, description;
         public ImageView avatar;
 
-        public MyViewHolder(View view) {
+
+        public MyViewHolder(final View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.hero_name);
             description = (TextView) view.findViewById(R.id.hero_description);
             avatar = (ImageView) view.findViewById(R.id.hero_avatar);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+
+                    Intent intent = new Intent(mContext,DetailActivity.class);
+                    intent.putExtra("name",heroList.get(getLayoutPosition()).getName())
+                           .putExtra("description",heroList.get(getLayoutPosition()).getDescription())
+                           .putExtra("avatar",heroList.get(getLayoutPosition()).getImage())
+                    ;
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -59,6 +77,7 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.MyViewHold
         Picasso.with(mContext)
                 .load(this.heroList.get(position).getImage())
                 .into(holder.avatar);
+
     }
 
     @Override
