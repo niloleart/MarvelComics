@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < result.length(); i++) {
                 JSONObject image = result.getJSONObject(i).getJSONObject("thumbnail");
                 myListArray.add(new Hero(
-                        result.getJSONObject(i).getString("name"),
-                        result.getJSONObject(i).getString("description"),
-                        image.getString("path") + "." + image.getString("extension"))
+                                result.getJSONObject(i).getString("name"),
+                                result.getJSONObject(i).getString("description"),
+                                image.getString("path") + "." + image.getString("extension"),
+                                result.getJSONObject(i).getString("id")
+                        )
                 );
                 Log.e(ON_CREATE_TAG, myListArray.toString());
             }

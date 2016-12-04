@@ -46,6 +46,7 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.MyViewHold
                     intent.putExtra("name",heroList.get(getLayoutPosition()).getName())
                            .putExtra("description",heroList.get(getLayoutPosition()).getDescription())
                            .putExtra("avatar",heroList.get(getLayoutPosition()).getImage())
+                            .putExtra("id",heroList.get(getLayoutPosition()).getId())
                     ;
                     context.startActivity(intent);
                 }

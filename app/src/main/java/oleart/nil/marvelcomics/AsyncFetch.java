@@ -21,15 +21,13 @@ import java.net.URL;
 public class AsyncFetch extends AsyncTask<String, Void, JSONObject> {
     public static final String TAG = AsyncFetch.class.getSimpleName();
 
-    public static final String URL = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=6cd9856dfd67d7e053798a2bf731b7a7&hash=91ac477fb8249d62c6489617ffcb97de&limit=100";
-
     @Override
     protected JSONObject doInBackground(String... params) {
         Log.e(TAG,"doInBackground");
         String response = null;
         try {
             Log.e(TAG,"creating connection");
-            URL myURL = new URL(URL);
+            URL myURL = new URL(params[0]);
             HttpURLConnection myConnection = (HttpURLConnection) myURL.openConnection();
             myConnection.setRequestMethod("GET");
             myConnection.setDoInput(true);
